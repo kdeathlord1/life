@@ -1,7 +1,7 @@
 
 public class Game {
-	final int ROWS = 3;
-	final int COLS = 5;
+	public static final int ROWS = 3;
+	public static final int COLS = 5;
 	
 	public boolean[] [] board = new boolean[ROWS] [COLS];
 	public boolean[] [] newBoard = new boolean[ROWS] [COLS];
@@ -50,11 +50,19 @@ public class Game {
 	}
 	
 	public boolean cellWillLive(int r, int c) {
-		if (neighbors(r, c) == 2) {
-			return true;
+		if (board[r][c] && neighbors(r, c) < 2) {
+			return false;
 		}
 
-		if (neighbors(r, c) == 3 && !board [r] [c]) {
+		if (board[r][c] && neighbors(r, c) > 3) {
+			return false;
+		}
+		
+		if (board[r][c] && neighbors(r, c) >= 2 && neighbors(r, c) <= 3) {
+			return true;
+		}
+		
+		if (!board[r][c] && neighbors(r, c) == 3) {
 			return true; 
 		}
 		return false;
