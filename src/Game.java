@@ -74,7 +74,11 @@ public class Game {
 			 newBoard[r] [c] = cellWillLive(r, c);
 			}
 		}
-		board = newBoard.clone();
+		for (int r = 0; r < ROWS; r++) {
+			for (int c = 0; c < COLS; c++) {
+			 board[r] [c] = newBoard[r][c];
+			}
+		}
 	}
 	
 	public static void main(String[] args){
